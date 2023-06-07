@@ -2,7 +2,7 @@ FAST FOOD SYSTEM
 INTRODUCTION:
 Fast Food python project, aims to stimulate a Digital fast-food ordering system using Python programming language. It allows users to interact with the system, place orders, manage menus, and calculate total costs.
 
-FEATURES:
+FEATURES:\n
 MENU MANAGEMENT: Admins can add, delete and can see the display of the food item. Each item includes details like name and price.
 ORDER PLACEMENT: Users can browse the menu and add items to their cart. They can specify the quantity for each item and view the total cost.
 ORDER PROCESSING:  The system generates an order confirmation with a unique order number.
