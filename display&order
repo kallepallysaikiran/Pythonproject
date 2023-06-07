@@ -1,0 +1,53 @@
+displayLabel = ttk.Label(displayFrame, image=displayDefaultImage)
+
+displayLabel.grid(row=0, column=0, sticky="NSEW", columnspan=2)
+
+displayLabel.configure(background="#0F1110")
+
+
+addOrderButton = ttk.Button(displayFrame, text="ADD TO ORDER", command=add)
+addOrderButton.grid(row=1, column=0, padx=2, sticky="NSEW")
+removeOrderButton = ttk.Button(displayFrame, text="REMOVE", command=remove)
+removeOrderButton.grid(row=1, column=1, padx=10, sticky="NSEW")
+
+orderTitleLabel = ttk.Label(orderFrame, text="ORDER")
+orderTitleLabel.configure(
+    foreground='white', background='Black',
+    font=("Helvetica", 14, "bold"), anchor="center",
+    padding=(5, 5, 5, 5),
+)
+orderTitleLabel.grid(row=0, column=0, sticky="EW")
+
+
+orderIDLabel = ttk.Label(orderFrame, text="ORDER ID :"+order_id())
+orderIDLabel.configure(
+    background="black", foreground="white",
+    font=("Helvetica", 11, "italic"), anchor="w"
+
+)
+orderIDLabel.grid(row=1, column=0, sticky="EW", pady=1)
+
+orderTransaction = ttk.Label(orderFrame, style='orderTransaction.TLabel')
+orderTransaction.grid(row=2, column=0, sticky="NSEW")
+
+
+orderTotalLabel = ttk.Label(orderFrame, text="Total :0Rs", style="orderTotalLabel.TLabel")
+orderTotalLabel.grid(row=3, column=0, sticky="EW")
+orderButton = ttk.Button(orderFrame, text="ORDER", command=order_button)
+orderButton.grid(row=4, column=0, sticky="EW")
+
+# '''''''''grid configuration
+
+mainFrame.columnconfigure(2, weight=1)
+mainFrame.rowconfigure(1, weight=1
+                       )
+menuFrame.columnconfigure(0, weight=1)
+menuFrame.rowconfigure(1, weight=1)
+menuFrame.rowconfigure(2, weight=1)
+menuFrame.rowconfigure(3, weight=1)
+menuFrame.rowconfigure(4, weight=1)
+menuFrame.rowconfigure(5, weight=1)
+menuFrame.rowconfigure(6, weight=1)
+orderFrame.columnconfigure(0, weight=1)
+orderFrame.rowconfigure(2, weight=1)
+root.mainloop()
