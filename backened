@@ -1,0 +1,272 @@
+prices = {
+    "CheeseBurger": 189,
+    "Manchuria": 100,
+    "Jerk Chicken": 299,
+    "Paella": 180,
+    "Parmigiana": 896,
+    "sushi": 400,
+}
+root.title("Digital menu project")
+
+
+# ...................functions...........
+def order_button():
+    new_receipt = orderIDLabel.cget("text")
+    new_receipt = new_receipt.replace("ORDER ID :", "")
+    transaction_list = orderTransaction.cget("text").split("Rs ")
+    transaction_list.pop(len(transaction_list) - 1)
+    order_day = date.today()
+    order_time = datetime.now()
+
+    with open(new_receipt, 'w') as file:
+        file.write("FAST FOOD")
+        file.write("\n")
+        file.write("_________________________________________________")
+        file.write("\n")
+        file.write(order_day.strftime("%x"))
+        file.write("\n")
+        file.write(order_time.strftime("%X"))
+        file.write("\n\n\n")
+        for item in transaction_list:
+            file.write(item+"\n")
+        file.write("\n\n")
+        file.write(orderTotalLabel.cget("text"))
+
+    orderTotalLabel.configure(text="Total :0Rs")
+    orderIDLabel.configure(text="ORDER ID: "+order_id())
+    orderTransaction.configure(text="")
+
+# generating a random order ID when started a new order
+
+
+def order_id():
+    letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K',
+               'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+    numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+    order_id1 = "VSA_"
+    random_letters = ""
+    random_digits = ""
+    for i in range(0, 6):
+        random_letters += random.choice(letters)
+        random_letters += random.choice(letters)
+        random_letters += random.choice(letters)
+        random_digits += str(random.choice(numbers))
+        random_digits += str(random.choice(numbers))
+        random_digits += str(random.choice(numbers))
+        order_id1 += random_letters+random_digits
+
+        return order_id1
+
+
+def display_burger():
+    burgerDishFrame.configure(
+        relief="sunken",
+        style="SelectedDish.TFrame"
+
+    )
+
+    manchurianDishFrame.configure(style="DishFrame.TFrame")
+    jerkChickenDishFrame.configure(style="DishFrame.TFrame")
+    paellaDishFrame.configure(style="DishFrame.TFrame")
+    ParmigianaDishFrame.configure(style="DishFrame.TFrame")
+    sushiDishFrame.configure(style="DishFrame.TFrame")
+
+    displayLabel.configure(
+        image=burgerImage,
+        text="CheeseBurger",
+        font=('Helvetica', 14, "bold"),
+        foreground="white", compound="bottom",
+        padding=(5, 5, 5, 5),
+    )
+
+
+def display_manchuria():
+    manchurianDishFrame.configure(
+        relief="sunken",
+        style="SelectedDish.TFrame"
+
+    )
+    burgerDishFrame.configure(style="DishFrame.TFrame")
+
+    jerkChickenDishFrame.configure(style="DishFrame.TFrame")
+    paellaDishFrame.configure(style="DishFrame.TFrame")
+    ParmigianaDishFrame.configure(style="DishFrame.TFrame")
+    sushiDishFrame.configure(style="DishFrame.TFrame")
+
+    displayLabel.configure(
+        image=chickenManchurianImage,
+        text="Manchuria",
+        font=('Helvetica', 14, "bold"),
+        foreground="white", compound="bottom",
+        padding=(5, 5, 5, 5),
+
+
+    )
+
+
+def display_chicken():
+    jerkChickenDishFrame.configure(
+        relief="sunken",
+        style="SelectedDish.TFrame"
+
+    )
+    burgerDishFrame.configure(style="DishFrame.TFrame")
+    manchurianDishFrame.configure(style="DishFrame.TFrame")
+
+    paellaDishFrame.configure(style="DishFrame.TFrame")
+    ParmigianaDishFrame.configure(style="DishFrame.TFrame")
+    sushiDishFrame.configure(style="DishFrame.TFrame")
+
+    displayLabel.configure(
+        image=jerkChickenImage,
+        text="Jerk Chicken",
+        font=('Helvetica', 14, "bold"),
+        foreground="white", compound="bottom",
+        padding=(5, 5, 5, 5),
+
+
+    )
+
+
+def display_paella():
+    paellaDishFrame.configure(
+        relief="sunken",
+        style="SelectedDish.TFrame"
+
+    )
+    burgerDishFrame.configure(style="DishFrame.TFrame")
+    manchurianDishFrame.configure(style="DishFrame.TFrame")
+    jerkChickenDishFrame.configure(style="DishFrame.TFrame")
+
+    ParmigianaDishFrame.configure(style="DishFrame.TFrame")
+    sushiDishFrame.configure(style="DishFrame.TFrame")
+
+    displayLabel.configure(
+        image=paellaImage,
+        text="Paella",
+        font=('Helvetica', 14, "bold"),
+        foreground="white", compound="bottom",
+        padding=(5, 5, 5, 5),
+
+
+    )
+
+
+def display_parmigiana():
+    ParmigianaDishFrame.configure(
+        relief="sunken",
+        style="SelectedDish.TFrame"
+
+    )
+    burgerDishFrame.configure(style="DishFrame.TFrame")
+    manchurianDishFrame.configure(style="DishFrame.TFrame")
+    jerkChickenDishFrame.configure(style="DishFrame.TFrame")
+    paellaDishFrame.configure(style="DishFrame.TFrame")
+
+    sushiDishFrame.configure(style="DishFrame.TFrame")
+
+    displayLabel.configure(
+        image=ParmigianaImage,
+        text="Parmigiana",
+        font=('Helvetica', 14, "bold"),
+        foreground="white", compound="bottom",
+        padding=(5, 5, 5, 5),
+
+
+    )
+
+
+def display_sushi():
+    sushiDishFrame.configure(
+        relief="sunken",
+        style="SelectedDish.TFrame"
+
+    )
+    burgerDishFrame.configure(style="DishFrame.TFrame")
+    manchurianDishFrame.configure(style="DishFrame.TFrame")
+    jerkChickenDishFrame.configure(style="DishFrame.TFrame")
+    paellaDishFrame.configure(style="DishFrame.TFrame")
+    ParmigianaDishFrame.configure(style="DishFrame.TFrame")
+
+    displayLabel.configure(
+        image=sushiImage,
+        text="sushi",
+        font=('Helvetica', 14, "bold"),
+        foreground="white", compound="bottom",
+        padding=(5, 5, 5, 5),
+     )
+
+
+def add():
+    current_order = orderTransaction.cget("text")
+    added_dish = displayLabel.cget("text")+"....."+str(prices[displayLabel.cget("text")])+"Rs "
+    updated_order = current_order + added_dish
+    orderTransaction.configure(text=updated_order)
+
+    # updating the order total label
+
+    order_total = orderTotalLabel.cget("text").replace("Total :", "")
+    order_total = order_total.replace("Rs", "")
+    updated_total = int(order_total)+prices[displayLabel.cget("text")]
+    orderTotalLabel.configure(text="Total :"+str(updated_total)+"Rs ")
+
+
+def remove():
+    dish_to_remove = displayLabel.cget("text")+"....."+str(prices[displayLabel.cget("text")])
+    transaction_list = orderTransaction.cget("text").split("Rs ")
+    transaction_list.pop(len(transaction_list)-1)
+
+    if dish_to_remove in transaction_list:
+
+        transaction_list.remove(dish_to_remove)
+        updated_order = ""
+        for item in transaction_list:
+            updated_order += item+"Rs "
+        orderTransaction.configure(text=updated_order)
+        order_total = orderTotalLabel.cget("text").replace("Total :", "")
+        order_total = order_total.replace("Rs", "")
+        updated_total = int(order_total)-prices[displayLabel.cget("text")]
+        orderTotalLabel.configure(text="Total :"+str(updated_total)+"Rs ")
+
+# ...............styling and images
+
+
+s = ttk.Style()
+
+s.configure('MainFrame.TFrame', background="#2B2B28")
+
+s.configure('MenuFrame.TFrame', background="#4A4A48")
+
+s.configure('DisplayFrame.TFrame', background="#0F1110")
+
+s.configure('OrderFrame.TFrame', background="#B7C4CF")
+
+s.configure('DishFrame.TFrame', backened="#4A4A48", relief="raised")
+
+s.configure('SelectedDish.TFrame', background="#C6F7B0")
+
+s.configure('MenuLabel.TLabel',
+            background="#0F1110",
+            font=("Arial", 13, "italic"),
+            foreground='white',
+
+            padding=(5, 5, 5, 5),
+            width=21
+            )
+
+s.configure('orderTotalLabel.TLabel',
+            background="#0F1110",
+            font=("Arial", 10, "bold"),
+            foreground="white",
+            padding=(2, 2, 2, 2),
+            anchor="w"
+            )
+
+s.configure('orderTransaction.TLabel',
+            background="#4A4A48",
+            font=('Helvetica', 12),
+            foreground="white",
+            wraplength=170,
+            anchor="nw",
+            padding=(3, 3, 3, 3)
+            )
