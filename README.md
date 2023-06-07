@@ -14,14 +14,9 @@ https://github.com/kallepallysaikiran/Pythonproject
 •	Install python 3.11.
 •	Install required dependencies:
                 pip install Tkinter :It is the standard GUI library for Python. It is a fast and easy way to create GUI applications
-                
-                
                 PIL: Python Imaging library it enabled python to deal with images
-                
                 Random: Loads the random module ,which contains a module, which contains a number of random number generation-relatad functions
-                
-                
-               Datetime: contains information on both date and time
+                Datetime: contains information on both date and time
 
 USAGE:
 Open a terminal and go to the project directory.
