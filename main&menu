@@ -1,0 +1,159 @@
+root.title("Digital menu project")
+
+s = ttk.Style()
+
+s.configure('MainFrame.TFrame', background="#2B2B28")
+
+s.configure('MenuFrame.TFrame', background="#4A4A48")
+
+s.configure('DisplayFrame.TFrame', background="#0F1110")
+
+s.configure('OrderFrame.TFrame', background="#B7C4CF")
+
+s.configure('DishFrame.TFrame', backened="#4A4A48", relief="raised")
+
+s.configure('SelectedDish.TFrame', background="#C6F7B0")
+
+s.configure('MenuLabel.TLabel',
+            background="#0F1110",
+            font=("Arial", 13, "italic"),
+            foreground='white',
+
+            padding=(5, 5, 5, 5),
+            width=21
+            )
+
+s.configure('orderTotalLabel.TLabel',
+            background="#0F1110",
+            font=("Arial", 10, "bold"),
+            foreground="white",
+            padding=(2, 2, 2, 2),
+            anchor="w"
+            )
+
+s.configure('orderTransaction.TLabel',
+            background="#4A4A48",
+            font=('Helvetica', 12),
+            foreground="white",
+            wraplength=170,
+            anchor="nw",
+            padding=(3, 3, 3, 3)
+            )
+
+# images
+
+
+LogoImageObject = Image.open("images/logo.png").resize((130, 130))
+LogoImage = ImageTk.PhotoImage(LogoImageObject)
+
+TopBannerImageObject = Image.open("images/view.jpeg").resize((800, 130))
+TopBannerImage = ImageTk.PhotoImage(TopBannerImageObject)
+
+# adding images in menu function
+
+displayDefaultImageObject = Image.open("images/Presentation1.jpg").resize((350, 360))
+displayDefaultImage = ImageTk.PhotoImage(displayDefaultImageObject)
+
+burgerImageObject = Image.open("images/menu/burger.jpeg").resize((350, 334))
+burgerImage = ImageTk.PhotoImage(burgerImageObject)
+
+chickenManchurianImageObject = Image.open("images/menu/chicken manchurian.jpeg").resize((350, 334))
+chickenManchurianImage = ImageTk.PhotoImage(chickenManchurianImageObject)
+
+jerkChickenImageObject = Image.open("images/menu/jerk chicken1.png").resize((350, 334))
+jerkChickenImage = ImageTk.PhotoImage(jerkChickenImageObject)
+
+paellaImageObject = Image.open("images/menu/paella1.jpg").resize((350, 334))
+paellaImage = ImageTk.PhotoImage(paellaImageObject)
+
+ParmigianaImageObject = Image.open("images/menu/Parmigiana.jpeg").resize((350, 334))
+ParmigianaImage = ImageTk.PhotoImage(ParmigianaImageObject)
+
+sushiImageObject = Image.open("images/menu/sushi1.png").resize((350, 334))
+sushiImage = ImageTk.PhotoImage(sushiImageObject)
+
+# ..................widgets
+# creating a main frame
+mainFrame = ttk.Frame(root, width=800, height=580, style='MainFrame.TFrame')
+mainFrame.grid(row=0, column=0, sticky="NSEW")
+
+
+topBannerFrame = ttk.Frame(mainFrame)
+topBannerFrame.grid(row=0, column=0, sticky="NSEW", columnspan=3)
+
+menuFrame = ttk.Frame(mainFrame, style='MenuFrame.TFrame')
+menuFrame.grid(row=1, column=0, padx=3, pady=3, sticky="NSEW")
+burgerDishFrame = ttk.Frame(menuFrame, style="DishFrame.TFrame")
+burgerDishFrame.grid(row=1, column=0, sticky="NEWS")
+
+manchurianDishFrame = ttk.Frame(menuFrame, style="DishFrame.TFrame")
+manchurianDishFrame.grid(row=2, column=0, sticky="NEWS")
+
+jerkChickenDishFrame = ttk.Frame(menuFrame, style="DishFrame.TFrame")
+jerkChickenDishFrame.grid(row=3, column=0, sticky="NEWS")
+
+
+paellaDishFrame = ttk.Frame(menuFrame, style="DishFrame.TFrame")
+paellaDishFrame.grid(row=4, column=0, sticky="NEWS")
+
+
+ParmigianaDishFrame = ttk.Frame(menuFrame, style="DishFrame.TFrame")
+ParmigianaDishFrame.grid(row=5, column=0, sticky="NEWS")
+
+
+sushiDishFrame = ttk.Frame(menuFrame, style="DishFrame.TFrame")
+sushiDishFrame.grid(row=6, column=0, sticky="NEWS")
+
+# labels main widget
+
+LogoLabel = ttk.Label(topBannerFrame, image=LogoImage, background="#0F1110")
+LogoLabel.grid(row=0, column=0, sticky="N")
+
+
+RestaurantBannerLabel = ttk.Label(topBannerFrame, image=TopBannerImage, background="#0F1110")
+RestaurantBannerLabel.grid(row=0, column=1, sticky="NSEW")
+
+# region menu section
+MainMenuLabel = ttk.Label(menuFrame, text="MENU", style="MenuLabel.TFrame")
+MainMenuLabel.grid(row=0, column=0, sticky="we")
+MainMenuLabel.configure(
+    anchor="center",
+    font=("Helvetica", 14, "bold")
+
+)
+burgerDishLabel = ttk.Label(burgerDishFrame, text="Cheese burger.....189RS", style="MenuLabel.TLabel")
+burgerDishLabel.grid(row=0, column=0, padx=10, pady=10, sticky="W")
+
+chickenManchurianDishLabel = ttk.Label(manchurianDishFrame, text="Chicken Manchuria.80RS", style="MenuLabel.TLabel")
+chickenManchurianDishLabel.grid(row=0, column=0, padx=10, pady=10, sticky="W")
+
+jerkChickenDishLabel = ttk.Label(jerkChickenDishFrame, text="Jerk Chicken.....299Rs", style="MenuLabel.TLabel")
+jerkChickenDishLabel.grid(row=0, column=0, padx=10, pady=10, sticky="W")
+
+paellaDishLabel = ttk.Label(paellaDishFrame, text="Paella.....180Rs", style="MenuLabel.TLabel")
+paellaDishLabel.grid(row=0, column=0, padx=10, pady=10, sticky="W")
+
+ParmigianaDishLabel = ttk.Label(ParmigianaDishFrame, text="Parmigiana.....896Rs", style="MenuLabel.TLabel")
+ParmigianaDishLabel.grid(row=0, column=0, padx=10, pady=10, sticky="W")
+
+sushiDishLabel = ttk.Label(sushiDishFrame, text="sushi.....400Rs", style="MenuLabel.TLabel")
+sushiDishLabel.grid(row=0, column=0, padx=10, pady=10, sticky="W")
+
+# >.................buttons
+burgerDishPlayButton = ttk.Button(burgerDishFrame, text="Display", command=display_burger)
+burgerDishPlayButton.grid(row=0, column=1, padx=10)
+
+chickenManchurianDishPlayButton = ttk.Button(manchurianDishFrame, text="Display", command=display_manchuria)
+chickenManchurianDishPlayButton.grid(row=0,  column=1, padx=10)
+
+jerkChickenDishButton = ttk.Button(jerkChickenDishFrame, text="Display", command=display_chicken)
+jerkChickenDishButton.grid(row=0, column=1, padx=10)
+
+paellaDishButton = ttk.Button(paellaDishFrame, text="Display", command=display_paella)
+paellaDishButton.grid(row=0, column=1, padx=10)
+
+ParmigianaDishButton = ttk.Button(ParmigianaDishFrame, text="Display", command=display_parmigiana)
+ParmigianaDishButton.grid(row=0, column=1, padx=10)
+
+sushiDishButton = ttk.Button(sushiDishFrame, text="Display", command=display_sushi)
+sushiDishButton.grid(row=0, column=1, padx=10)
